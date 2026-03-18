@@ -1,11 +1,12 @@
 import pandas as pd
 import numpy as np
+import scipy
 import matplotlib.pyplot as plt
 import seaborn as sb
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import Ridge
+from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 
 df = pd.read_csv("EVENTUALLY_PUT_CSV_HERE")
@@ -19,26 +20,20 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-ridge_model = Ridge(alpha=1.0)
-ridge_model.fit(X_train_scaled, y_train)
+knn_model = KNeighborsRegressor(n_neighbors=5, weights="uniform", metric="minkowski")  # Beginning with 5 neighbour analysis
 
-y_pred = ridge_model.predict(X_test_scaled)
+knn_model.fit(X_train_scaled, y_train)
+
+y_pred = knn_model.predict(X_test_scaled)
 
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
-print("Ridge Regression Results")
+print("KNN Regression Results")
 print(f"MSE:  {mse:.4f}")
 print(f"RMSE: {rmse:.4f}")
 print(f"R^2:  {r2:.4f}")
-
-coefficients = pd.DataFrame()
-coefficients['feature_name'] = X_train.columns
-coefficients['coefficients'] = pd.Series(ridge_model.coef_)
-
-print("\nModel Coefficients:")
-print(coefficients)
 
 plt.figure(figsize=(8, 6))
 sb.scatterplot(x=y_test, y=y_pred)
