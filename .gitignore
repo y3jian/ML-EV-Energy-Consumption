@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Dataset 3 processed outputs — too large for GitHub (100 MB hard limit).
+# Regenerate with `3-EV_population_data_prep.ipynb` (run all cells through Export).
+data/processed/3-EV_population_data_cleaned.csv
+data/processed/3-EV_population_data_X_train.csv
+data/processed/3-EV_population_data_X_val.csv
+data/processed/3-EV_population_data_X_test.csv
+data/processed/3-EV_population_data_y_train.csv
+data/processed/3-EV_population_data_y_val.csv
+data/processed/3-EV_population_data_y_test.csv
