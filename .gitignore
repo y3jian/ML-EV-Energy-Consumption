@@ -7,6 +7,4 @@ __pycache__/
 .venv/
 venv/
 
-# Dataset 3: full cleaned table often exceeds GitHub's 100 MB per-file limit.
-# Train/val/test splits (X_*, y_*) are tracked; regenerate everything via `3-EV_population_data_prep.ipynb`.
-data/processed/3-EV_population_data_cleaned.csv
+# Dataset 3 processed exports are tracked.
