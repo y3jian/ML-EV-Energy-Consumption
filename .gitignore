@@ -7,12 +7,6 @@ __pycache__/
 .venv/
 venv/
 
-# Dataset 3 processed outputs — exceed GitHub 100 MB limit / not recommended in git.
-# Regenerate: run `3-EV_population_data_prep.ipynb` through the Export cells.
+# Dataset 3: full cleaned table often exceeds GitHub's 100 MB per-file limit.
+# Train/val/test splits (X_*, y_*) are tracked; regenerate everything via `3-EV_population_data_prep.ipynb`.
 data/processed/3-EV_population_data_cleaned.csv
-data/processed/3-EV_population_data_X_train.csv
-data/processed/3-EV_population_data_X_val.csv
-data/processed/3-EV_population_data_X_test.csv
-data/processed/3-EV_population_data_y_train.csv
-data/processed/3-EV_population_data_y_val.csv
-data/processed/3-EV_population_data_y_test.csv
