@@ -17,3 +17,4 @@ data/processed/3-EV_population_data_X_test.csv
 data/processed/3-EV_population_data_y_train.csv
 data/processed/3-EV_population_data_y_val.csv
 data/processed/3-EV_population_data_y_test.csv
+.DS_Store
