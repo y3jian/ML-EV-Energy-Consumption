@@ -6,7 +6,7 @@
 
 | Split | Dataset 5 | Dataset 4 |
 |-------|-----------|-----------|
-| Train | `5-EV_energy_consumption_X_train.csv`, `y_train` | `4-ev_charging_patterns_X_train.csv`, `y_train` |
+| Train | `5-EV_energy_consumption_X_train.csv`, `y_train` | `4-ev_charging_X_train.csv`, `y_train` |
 | Val   | `*_X_val.csv`, `y_val` | `*_X_val.csv`, `y_val` |
 | Test  | `*_X_test.csv`, `y_test` | `*_X_test.csv`, `y_test` |
 

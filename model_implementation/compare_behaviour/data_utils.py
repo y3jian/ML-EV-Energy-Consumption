@@ -3,7 +3,7 @@ Compare driving behaviors — pooled **processed** features from datasets **4** 
 
 Reads pre-built train/val/test splits (same 60/20/20 logic as the prep notebooks):
 
-- `data/processed/4-ev_charging_patterns_X_{train,val,test}.csv` + `y_*`
+- `data/processed/4-ev_charging_X_{train,val,test}.csv` + `y_*`
 - `data/processed/5-EV_energy_consumption_X_{train,val,test}.csv` + `y_*`
 
 Each split stacks dataset-5 rows above dataset-4 rows. Feature columns are the **union** of both
@@ -31,7 +31,7 @@ TARGET_COL = "Energy_Consumption_kWh"
 Y_COL_DATASET_5 = "Energy_Consumption_kWh"
 Y_COL_DATASET_4 = "Energy Consumed (kWh)"
 
-PREFIX_4 = "4-ev_charging_patterns"
+PREFIX_4 = "4-ev_charging"
 PREFIX_5 = "5-EV_energy_consumption"
 
 
