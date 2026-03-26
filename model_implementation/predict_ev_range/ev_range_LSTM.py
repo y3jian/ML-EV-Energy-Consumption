@@ -90,4 +90,4 @@ results_df = pd.DataFrame(results)
 print("\n=== LSTM Comparison ===")
 print(results_df)
 
-results_df.to_csv("lstm_results_comparison.csv", index=False)
+results_df.to_csv("ev_range_lstm_results_comparison.csv", index=False)
