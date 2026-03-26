@@ -6,5 +6,6 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+.env
 
-# Dataset 3 processed exports are tracked.
+# Dataset 3 processed exports are tracked in-repo for modeling workflows.
