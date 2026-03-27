@@ -63,3 +63,36 @@ DS6 — World GDP & CO2 Emissions | Gradient Boosting
   Best params : {'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 100}
   RMSE        : 5.1995e+08
   R2          : 0.9949
+
+
+
+
+  Second try:
+  -------- Lasso -----------
+DS5 — EV Energy Consumption | Lasso
+  Optimal alpha   : 0.002759
+  Non-zero coefs  : 19 / 25
+  RMSE            : 0.5108
+  R2              : 0.9462
+
+  ------ Gradient Boosting --------
+DS5 — EV Energy Consumption | Gradient Boosting
+  Best params : {'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 200}
+  RMSE        : 0.5612
+  R2          : 0.9350
+
+DS1 — Vehicle Emissions (High vs Not High) | Gradient Boosting
+  Best params  : {'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 100}
+  Accuracy     : 0.5250
+  Weighted F1  : 0.5072
+
+  ------ Random Forest ---------
+DS5 — EV Energy Consumption | Random Forest
+  CV R2 (5-fold)  : 0.9118 +/- 0.0036
+  RMSE            : 0.6500
+  R2              : 0.9129
+
+DS1 — Vehicle Emissions (High vs Not High) | Random Forest
+  CV Accuracy (5-fold) : 0.5338 +/- 0.0052
+  Accuracy             : 0.5440
+  Weighted F1          : 0.4770
