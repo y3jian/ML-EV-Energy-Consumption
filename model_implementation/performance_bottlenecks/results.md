@@ -84,10 +84,11 @@ DS5 — EV Energy Consumption | Gradient Boosting
   Test  RMSE     : 0.5665  R2: 0.9338
 
 DS1 — Vehicle Emissions (High vs Not High) | Gradient Boosting
-  Best params  : {'learning_rate': 0.1, 'max_depth': 4, 'n_estimators': 200}
-  Train Accuracy : 0.8038  Weighted F1: 0.8010
-  Val   Accuracy : 0.5045  Weighted F1: 0.4932
-  Test  Accuracy : 0.5320  Weighted F1: 0.5214
+  Best params  : {'learning_rate': 0.1, 'max_depth': 2, 'n_estimators': 50}
+  Train Accuracy : 0.5775  Weighted F1: 0.5713
+  Val   Accuracy : 0.5200  Weighted F1: 0.5138
+  Test  Accuracy : 0.5095  Weighted F1: 0.5030
+
   ------ Random Forest ---------
 DS5 — EV Energy Consumption | Random Forest
   CV R2 (5-fold)  : 0.9071 +/- 0.0047
@@ -96,7 +97,7 @@ DS5 — EV Energy Consumption | Random Forest
   Test  RMSE     : 0.6703  R2: 0.9074
 
 DS1 — Vehicle Emissions (High vs Not High) | Random Forest
-  CV Accuracy (5-fold) : 0.5410 +/- 0.0076
-  Train Accuracy : 1.0000  Weighted F1: 1.0000
-  Val   Accuracy : 0.5210  Weighted F1: 0.4640
-  Test  Accuracy : 0.5420  Weighted F1: 0.4818
+  CV Accuracy (5-fold) : 0.5153 +/- 0.0116
+  Train Accuracy : 0.6890  Weighted F1: 0.6869
+  Val   Accuracy : 0.5110  Weighted F1: 0.5092
+  Test  Accuracy : 0.5110  Weighted F1: 0.5080

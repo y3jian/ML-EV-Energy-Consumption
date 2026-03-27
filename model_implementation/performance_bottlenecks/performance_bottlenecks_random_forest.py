@@ -45,7 +45,7 @@ y_train = (y_train == 2).astype(int)
 y_val   = (y_val == 2).astype(int)
 y_test  = (y_test == 2).astype(int)
 
-rf1 = RandomForestClassifier(n_estimators=N_ESTIMATORS, random_state=RANDOM_STATE, n_jobs=-1, class_weight="balanced")
+rf1 = RandomForestClassifier(n_estimators=N_ESTIMATORS, random_state=RANDOM_STATE, n_jobs=-1, class_weight="balanced", max_depth=5, min_samples_leaf=5)
 cv_acc = cross_val_score(rf1, X_train, y_train, cv=5, scoring="accuracy", n_jobs=-1)
 rf1.fit(X_train, y_train)
 

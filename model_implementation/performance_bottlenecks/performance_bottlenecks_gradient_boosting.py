@@ -12,10 +12,16 @@ RANDOM_STATE = 42
 
 LEAKAGE_COLS = ["CO2 Emissions", "NOx Emissions", "PM2.5 Emissions", "VOC Emissions", "SO2 Emissions"]
 
-PARAM_GRID = {
+PARAM_GRID_DS5 = {
     "n_estimators":  [100, 200],
     "learning_rate": [0.05, 0.10],
     "max_depth":     [3, 4]
+}
+
+PARAM_GRID_DS1 = {
+    "n_estimators":  [50, 100],
+    "learning_rate": [0.05, 0.10],
+    "max_depth":     [2]
 }
 
 
@@ -34,7 +40,7 @@ X_train, y_train, X_val, y_val, X_test, y_test = load_splits("5-EV_energy_consum
 
 search5 = GridSearchCV(
     GradientBoostingRegressor(random_state=RANDOM_STATE),
-    PARAM_GRID, cv=5, scoring="r2", n_jobs=-1
+    PARAM_GRID_DS5, cv=5, scoring="r2", n_jobs=-1
 )
 search5.fit(X_train, y_train)
 best5 = search5.best_estimator_
@@ -59,7 +65,7 @@ pipe1 = ImbPipeline([
     ("smote", SMOTE(random_state=RANDOM_STATE)),
     ("clf",   GradientBoostingClassifier(random_state=RANDOM_STATE)),
 ])
-param_grid_1 = {f"clf__{k}": v for k, v in PARAM_GRID.items()}
+param_grid_1 = {f"clf__{k}": v for k, v in PARAM_GRID_DS1.items()}
 search1 = GridSearchCV(pipe1, param_grid_1, cv=5, scoring="f1_weighted", n_jobs=-1)
 search1.fit(X_train, y_train)
 best1 = search1.best_estimator_
