@@ -1,4 +1,4 @@
-Dataset,RMSE,R2
-Dataset 2 (EV specs → Efficiency),18.860252131962582,0.6882497898935402
-Dataset 4 (EV charging → Charging Cost),11.406798182950165,-0.16405823701326505
-Dataset 5 (EV energy → kWh),1.4199648564928953,0.5842017175076697
+Dataset,Train_RMSE,Val_RMSE,Test_RMSE,Train_R2,Val_R2,Test_R2,Test_MAE,Test_MAPE_pct,Fit_diagnosis,Train_s,Predict_s,Total_s
+Dataset 2 (EV specs -> Efficiency),0.485562463,22.009476884931733,18.860252131962582,0.9996943208155452,0.2782547634295317,0.6882497898935402,14.022144732867297,6.639700003123616,"overfitting signal: much worse on validation than in-sample train, while validation ≈ test (typical generalization gap) [train val test RMSE ratio≈1:45.33:38.84; val vs test RMSE rel diff=0.17; trainR2−valR2=0.721]",0.054804874999999864,0.002465709,0.057270584
+Dataset 4 (EV charging -> Charging Cost),7.061094571718583,11.996016625548359,11.406798182950165,0.5615890067953377,-0.141427935,-0.164058237,9.691711974,58.04692168636739,"validation and test align but scores are poor — weak model or hard target, not necessarily 'overfit' [train val test RMSE ratio≈1:1.70:1.62; val vs test RMSE rel diff=0.05; trainR2−valR2=0.703]",0.30766316699999985,0.003903792,0.31156695899999987
+Dataset 5 (EV energy -> kWh),1.1311899479474128,1.331246570164241,1.4199648564928953,0.7319292277008114,0.6214757830959292,0.5842017175076697,1.1551523569154811,15.324966124458541,no extreme under/overfit pattern by these rules; compare RMSE/R2 across splits [train val test RMSE ratio≈1:1.18:1.26; val vs test RMSE rel diff=0.06; trainR2−valR2=0.110],0.9904046660000003,0.010262374999999935,1.0006670410000003
