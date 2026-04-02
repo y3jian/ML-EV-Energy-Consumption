@@ -182,7 +182,3 @@ ML-EV-Energy-Consumption/
 ```
 
 ---
-
-## License / attribution
-
-Use and cite this repository per your course or organization policy. Upstream data use is subject to the original dataset licenses.
