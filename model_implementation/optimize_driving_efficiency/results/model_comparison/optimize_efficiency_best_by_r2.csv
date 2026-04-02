@@ -1,0 +1,4 @@
+Dataset,Model,Test_RMSE,Test_R2
+Dataset 2 (EV specs -> Efficiency),Ridge,14.54803793521772,0.8145099509838163
+Dataset 4 (EV charging -> Charging Cost),Ridge,10.633019778104982,-0.011487304434824
+Dataset 5 (EV energy -> kWh),Ridge,1.3835342958210164,0.6052634350187326
