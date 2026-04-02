@@ -1,4 +1,4 @@
-Dataset,RMSE,R2
-Dataset 2 (EV specs → Efficiency),21.966555964747428,0.5771019245445008
-Dataset 4 (EV charging → Charging Cost),11.073401434179443,-0.09700670326682759
-Dataset 5 (EV energy → kWh),1.4123635985336056,0.5886414477778954
+Dataset,Train_RMSE,Val_RMSE,Test_RMSE,Train_R2,Val_R2,Test_R2,Test_MAE,Test_MAPE_pct,Fit_diagnosis,Train_s,Predict_s,Total_s
+Dataset 2 (EV specs -> Efficiency),7.543523006146552,23.12913039046318,21.966555964747428,0.9262224730959501,0.20295453658594287,0.5771019245445008,15.459523809523809,7.207591834472525,"overfitting signal: much worse on validation than in-sample train, while validation ≈ test (typical generalization gap) [train val test RMSE ratio≈1:3.07:2.91; val vs test RMSE rel diff=0.05; trainR2−valR2=0.723]",0.1311750410000001,0.08191804199999986,0.21309308299999996
+Dataset 4 (EV charging -> Charging Cost),4.029161688582141,11.648038936086662,11.073401434179445,0.8572530719796914,-0.07616783270033034,-0.09700670326682759,9.506273484848485,57.253064470872474,"overfitting signal: much worse on validation than in-sample train, while validation ≈ test (typical generalization gap) [train val test RMSE ratio≈1:2.89:2.75; val vs test RMSE rel diff=0.05; trainR2−valR2=0.933]",0.2226824999999999,0.0844610419999996,0.3071435419999995
+Dataset 5 (EV energy -> kWh),0.5045429370187015,1.3420062262080374,1.4123635985336054,0.9466696230932516,0.6153322941088801,0.5886414477778954,1.149887376797294,15.265862072549105,"overfitting signal: much worse on validation than in-sample train, while validation ≈ test (typical generalization gap) [train val test RMSE ratio≈1:2.66:2.80; val vs test RMSE rel diff=0.05; trainR2−valR2=0.331]",0.5033367499999999,0.09574091600000001,0.5990776659999999

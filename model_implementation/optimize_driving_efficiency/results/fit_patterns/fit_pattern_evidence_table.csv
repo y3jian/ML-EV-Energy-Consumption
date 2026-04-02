@@ -1,0 +1,4 @@
+Dataset,Evidence_from_numbers
+Dataset 2 (EV specs -> Efficiency),"Random Forest: RMSE 7.54->23.13->21.97, R2 0.93->0.20->0.58 | Gradient Boosting: RMSE 0.49->22.01->18.86, R2 1.00->0.28->0.69 | Ridge: RMSE 15.10->17.37->14.55, R2 0.70->0.55->0.81"
+Dataset 4 (EV charging -> Charging Cost),"Random Forest: RMSE 4.03->11.65->11.07, R2 0.86->-0.08->-0.10 | Gradient Boosting: RMSE 7.06->12.00->11.41, R2 0.56->-0.14->-0.16 | Ridge: RMSE 10.56->11.29->10.63, R2 0.02->-0.01->-0.01"
+Dataset 5 (EV energy -> kWh),"Random Forest: RMSE 0.50->1.34->1.41, R2 0.95->0.62->0.59 | Gradient Boosting: RMSE 1.13->1.33->1.42, R2 0.73->0.62->0.58 | Ridge: RMSE 1.30->1.29->1.38, R2 0.64->0.64->0.61"

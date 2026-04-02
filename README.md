@@ -1,4 +1,5 @@
 # ML-EV-Energy-Consumption
+<<<<<<< HEAD
 This project analyzes the application of machine learning models in the electric vehivle sector, specifically analyzing real-world energy consumption patterns.
 
 ## Project Overview
@@ -33,3 +34,9 @@ This project organizes several EV-related datasets into a common workflow:
 2. Export processed train/validation/test splits,
 3. Train multiple machine learning models,
 4. Compare model performance across datasets and tasks.
+=======
+## How to run the code
+## Dependencies
+## Folder structure
+## Reproducibility instructions
+>>>>>>> f608192644d10ce9c83d66e09642c2082d103f4b
