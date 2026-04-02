@@ -1,5 +1,5 @@
+import importlib.util
 import re
-import sys
 from pathlib import Path
 from time import perf_counter
 
@@ -8,15 +8,27 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import Ridge
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.preprocessing import StandardScaler
 
 _PKG = Path(__file__).resolve().parent
-sys.path.insert(0, str(_PKG))
 
-from optimize_efficiency_data import load_dataset_2, load_dataset_4, load_dataset_5
-from optimize_efficiency_fit_diagnostics import diagnose_regression_fit
+
+def _load_sibling(rel_filename: str, module_name: str):
+    spec = importlib.util.spec_from_file_location(module_name, _PKG / rel_filename)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Cannot load {_PKG / rel_filename}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+_data = _load_sibling("0.1 optimize_efficiency_data.py", "optimize_efficiency_data")
+_fit = _load_sibling("0.2 optimize_efficiency_fit_diagnostics.py", "optimize_efficiency_fit_diagnostics")
+load_dataset_2 = _data.load_dataset_2
+load_dataset_4 = _data.load_dataset_4
+load_dataset_5 = _data.load_dataset_5
+diagnose_regression_fit = _fit.diagnose_regression_fit
 
 
 def safe_mape(y_true, y_pred) -> float:
@@ -83,7 +95,7 @@ datasets = {
 }
 
 results = []
-output_dir = _PKG / "results" / "ridge"
+output_dir = _PKG / "results" / "gradient_boosting"
 output_dir.mkdir(parents=True, exist_ok=True)
 
 print(
@@ -97,21 +109,18 @@ for name, loader in datasets.items():
     try:
         X_train, X_val, X_test, y_train, y_val, y_test = loader()
 
-        scaler = StandardScaler()
-        X_train_s = scaler.fit_transform(X_train)
-        X_val_s = scaler.transform(X_val)
-        X_test_s = scaler.transform(X_test)
-
-        model = Ridge(alpha=1.0)
+        model = GradientBoostingRegressor(
+            n_estimators=200, learning_rate=0.1, max_depth=3, random_state=42
+        )
 
         t0 = perf_counter()
-        model.fit(X_train_s, y_train)
+        model.fit(X_train, y_train)
         train_s = perf_counter() - t0
 
         t1 = perf_counter()
-        y_pred_tr = model.predict(X_train_s)
-        y_pred_va = model.predict(X_val_s)
-        y_pred = model.predict(X_test_s)
+        y_pred_tr = model.predict(X_train)
+        y_pred_va = model.predict(X_val)
+        y_pred = model.predict(X_test)
         pred_s = perf_counter() - t1
         total_s = train_s + pred_s
 
@@ -151,13 +160,13 @@ for name, loader in datasets.items():
         plot_actual_vs_pred(
             y_test,
             y_pred,
-            f"Ridge - {name} (Actual vs Predicted)",
+            f"Gradient Boosting - {name} (Actual vs Predicted)",
             output_dir / f"{ds}_actual_vs_pred.png",
         )
         plot_residuals(
             y_test,
             y_pred,
-            f"Ridge - {name} (Residuals)",
+            f"Gradient Boosting - {name} (Residuals)",
             output_dir / f"{ds}_residuals.png",
         )
 
@@ -177,10 +186,10 @@ for name, loader in datasets.items():
 
 results_df = pd.DataFrame(results)
 
-print("\n=== Ridge (optimize driving efficiency) ===")
+print("\n=== Gradient Boosting (optimize driving efficiency) ===")
 print(results_df)
 
-out_path = Path("optimize_efficiency_ridge_results_comparison.csv")
+out_path = Path("optimize_efficiency_gb_results_comparison.csv")
 results_df.to_csv(out_path, index=False)
 print(f"\nResults saved to {out_path}")
 
@@ -188,19 +197,19 @@ if not results_df.empty:
     plot_bar(
         results_df,
         "Test_RMSE",
-        "Ridge - test RMSE by dataset",
+        "Gradient Boosting - test RMSE by dataset",
         output_dir / "comparison_rmse.png",
     )
     plot_bar(
         results_df,
         "Test_R2",
-        "Ridge - test R2 by dataset",
+        "Gradient Boosting - test R2 by dataset",
         output_dir / "comparison_r2.png",
     )
     plot_bar(
         results_df,
         "Total_s",
-        "Ridge - total runtime by dataset",
+        "Gradient Boosting - total runtime by dataset",
         output_dir / "comparison_runtime.png",
     )
     print(f"Plots saved under: {output_dir}")

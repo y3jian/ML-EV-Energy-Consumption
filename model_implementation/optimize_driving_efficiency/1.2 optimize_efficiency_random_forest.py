@@ -1,5 +1,5 @@
+import importlib.util
 import re
-import sys
 from pathlib import Path
 from time import perf_counter
 
@@ -12,10 +12,23 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 _PKG = Path(__file__).resolve().parent
-sys.path.insert(0, str(_PKG))
 
-from optimize_efficiency_data import load_dataset_2, load_dataset_4, load_dataset_5
-from optimize_efficiency_fit_diagnostics import diagnose_regression_fit
+
+def _load_sibling(rel_filename: str, module_name: str):
+    spec = importlib.util.spec_from_file_location(module_name, _PKG / rel_filename)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Cannot load {_PKG / rel_filename}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+_data = _load_sibling("0.1 optimize_efficiency_data.py", "optimize_efficiency_data")
+_fit = _load_sibling("0.2 optimize_efficiency_fit_diagnostics.py", "optimize_efficiency_fit_diagnostics")
+load_dataset_2 = _data.load_dataset_2
+load_dataset_4 = _data.load_dataset_4
+load_dataset_5 = _data.load_dataset_5
+diagnose_regression_fit = _fit.diagnose_regression_fit
 
 
 def safe_mape(y_true, y_pred) -> float:
